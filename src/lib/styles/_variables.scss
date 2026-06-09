@@ -1,0 +1,26 @@
+@use './helpers' as *;
+
+:root {
+  // params from: gap,padding,margin
+  --size-xxl: #{rem(80)};
+  --size-xl: #{rem(48)};
+  --size-l: #{rem(32)};
+  --size-m: #{rem(24)};
+  --size-s: #{rem(16)};
+  --size-xs: #{rem(8)};
+
+  // Border radius params
+  --b-radius-l: #{rem(24)};
+  --b-radius-m: #{rem(16)};
+  --b-radius-s: #{rem(12)};
+  --b-radius-xs: #{rem(8)};
+
+  // Font size params
+  --f-size-4l: #{rem(240)};
+  --f-size-3l: #{rem(74)};
+  --f-size-xxl: #{rem(46)};
+  --f-size-xl: #{rem(36)};
+  --f-size-l: #{rem(26)};
+  --f-size-m: #{rem(24)};
+  --f-size-s: #{rem(20)};
+}

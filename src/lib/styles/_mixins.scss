@@ -1,0 +1,11 @@
+@use './_helpers.scss' as *;
+
+@mixin container-width() {
+  width: min(88vw, rem(1920));
+  margin-inline: auto;
+}
+
+@mixin scene-rule() {
+  min-height: 100svh;
+  display: flex;
+}

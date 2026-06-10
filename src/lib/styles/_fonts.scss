@@ -1,0 +1,32 @@
+// Typography rules
+
+@font-face {
+  font-family: 'Sofia Sans';
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  src: url('@/assets/fonts/SofiaSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik Mono One';
+  font-weight: 400;
+  font-style: normal;
+
+  src: url('@/assets/fonts/RubikMonoOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+  src: url('@/assets/fonts/Oswald-Regular.ttf') format('truetype');
+}
+
+html,
+body {
+  font-family: var(--f-family-default);
+}

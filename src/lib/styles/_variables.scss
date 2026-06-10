@@ -1,6 +1,11 @@
 @use './helpers' as *;
 
 :root {
+  // Font names
+  --f-family-default: 'Sofia Sans', sans-serif;
+  --f-family-heading: 'Rubik Mono One', monospace;
+  --f-family-secondary: 'Oswald', sans-serif;
+
   // params from: gap,padding,margin
   --size-xxl: #{rem(80)};
   --size-xl: #{rem(48)};
@@ -23,4 +28,21 @@
   --f-size-l: #{rem(26)};
   --f-size-m: #{rem(24)};
   --f-size-s: #{rem(20)};
+
+  // Container width
+  --container-width: min(88vw, #{rem(1920)});
+
+  // Scene height
+  --scene-min-height: 100svh;
+
+  // Colors
+  --dark-bg: #1d1d1d;
+  --general-bg: #2b2b2b;
+  --secondary-bg: #4e4d4d;
+  --gray-bg: #7a7a7a;
+  --text-color: #cdcdcd;
+
+  // Box shadow
+  --general-shadow-rule: #{rem(3)} #{rem(3)} #{rem(5)} #{rem(-1)} rgba(29, 29, 29, 0.92);
+  --clock-shadow-rule: #{rem(6)} #{rem(7)} #{rem(4)} #{rem(-2)} rgba(10, 10, 10, 0.2);
 }

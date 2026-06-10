@@ -1,11 +1,90 @@
 @use './_helpers.scss' as *;
 
 @mixin container-width() {
-  width: min(88vw, rem(1920));
+  width: var(--container-width);
   margin-inline: auto;
 }
 
 @mixin scene-rule() {
-  min-height: 100svh;
+  min-height: var(--scene-min-height);
   display: flex;
+}
+
+@mixin popup-padding() {
+  padding: var(--size-s);
+}
+
+@mixin popup() {
+  @include popup-padding;
+
+  & {
+    --popup-bg-color: var(--general-bg);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--size-s);
+
+    border-radius: var(--b-radius-l);
+    background-color: var(--popup-bg-color);
+  }
+}
+
+@mixin popup-inner-menu() {
+  --menu-bg-color: var(--secondary-bg);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--size-s);
+
+  border-radius: var(--b-radius-m);
+  background-color: var(--menu-bg-color);
+}
+
+@mixin menu() {
+  @include popup-padding;
+
+  & {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--size-xs);
+  }
+}
+
+@mixin menu-item() {
+  font-size: var(--f-size-m);
+  font-weight: 400;
+  line-height: 1.2;
+
+  text-transform: capitalize;
+
+  display: flex;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: var(--size-xs);
+  gap: var(--size-s);
+
+  border-radius: var(--b-radius-s);
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+}
+
+@mixin submenu-item() {
+  font-size: var(--f-size-s);
+  font-weight: 400;
+  line-height: 1.2;
+
+  text-transform: capitalize;
+
+  display: block;
+  padding: var(--size-xs) var(--size-s);
+
+  border-radius: var(--b-radius-s);
+  background-color: var(--general-bg);
+  color: var(--text-color);
 }

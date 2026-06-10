@@ -46,8 +46,12 @@ export default defineConfig({
     },
   },
   resolve: {
+    /*prettier-ignore*/
     alias: {
       '@': pathsResolver('src'),
+      '$assets': pathsResolver('src/assets'),
+      '$components': pathsResolver('src/components'),
+      '$styles': pathsResolver('src/lib/styles')
     },
   },
 });

@@ -2,7 +2,7 @@ import { mount } from 'svelte';
 
 import { initI18n } from '@/services/i18n';
 
-import './app.css';
+import '$styles/_index.scss';
 import App from './App.svelte';
 
 async function bootstrap() {

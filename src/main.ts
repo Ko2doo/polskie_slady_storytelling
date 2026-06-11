@@ -1,6 +1,7 @@
 import { mount } from 'svelte';
 
 import { initI18n } from '@/services/i18n';
+import '@/services/gsap';
 
 import '$styles/_index.scss';
 import App from './App.svelte';

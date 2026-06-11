@@ -1,3 +1,5 @@
+@use './mixins' as *;
+
 html,
 body {
   font-size: 100%;
@@ -8,7 +10,31 @@ body {
   padding: 0;
   margin: 0;
 
+  position: relative;
   overflow: hidden;
+
+  // @include z-index-xs;
+}
+
+#app {
+  @include scene-rule;
+  // @include z-index-m;
+
+  & {
+    font-size: 100%;
+
+    word-break: break-word;
+    text-wrap: balance;
+
+    margin: 0;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: var(--size-l);
+
+    background-color: var(--dark-bg);
+  }
 }
 
 * {
@@ -20,7 +46,6 @@ body {
   }
 }
 
-body,
 div,
 dl,
 dt,
@@ -132,4 +157,11 @@ img {
 
 a {
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
 }

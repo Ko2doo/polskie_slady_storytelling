@@ -51,7 +51,8 @@ export default defineConfig({
       '@': pathsResolver('src'),
       '$assets': pathsResolver('src/assets'),
       '$components': pathsResolver('src/components'),
-      '$styles': pathsResolver('src/lib/styles')
+      '$styles': pathsResolver('src/lib/styles'),
+      '$libs': pathsResolver('src/lib'),
     },
   },
 });

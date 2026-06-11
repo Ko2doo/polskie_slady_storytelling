@@ -10,3 +10,8 @@ export const resources = {
     translation: ru,
   },
 };
+
+export const localeCode = {
+  pl: 'Polski',
+  ru: 'Русский',
+};

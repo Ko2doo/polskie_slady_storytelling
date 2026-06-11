@@ -7,34 +7,35 @@
   --f-family-secondary: 'Oswald', sans-serif;
 
   // params from: gap,padding,margin
-  --size-xxl: #{rem(80)};
-  --size-xl: #{rem(48)};
-  --size-l: #{rem(32)};
-  --size-m: #{rem(24)};
+  --size-xxl: clamp(#{rem(40)}, 12vw, #{rem(80)});
+  --size-xl: clamp(#{rem(24)}, 10vw, #{rem(48)});
+  --size-l: clamp(#{rem(8)}, 4vw, #{rem(32)});
+  --size-m: clamp(#{rem(12)}, 4vw, #{rem(24)});
   --size-s: #{rem(16)};
   --size-xs: #{rem(8)};
 
   // Border radius params
+  --b-radius-xl: #{rem(32)};
   --b-radius-l: #{rem(24)};
   --b-radius-m: #{rem(16)};
   --b-radius-s: #{rem(12)};
   --b-radius-xs: #{rem(8)};
 
   // Font size params
-  --f-size-4l: #{rem(240)};
-  --f-size-3l: #{rem(74)};
-  --f-size-xxl: #{rem(46)};
-  --f-size-xl: #{rem(36)};
-  --f-size-l: #{rem(26)};
-  --f-size-m: #{rem(24)};
-  --f-size-s: #{rem(20)};
+  --f-size-4l: clamp(#{rem(72)}, 10vw, #{rem(240)});
+  --f-size-3l: clamp(#{rem(24)}, 4vw, #{rem(74)});
+  --f-size-xxl: clamp(#{rem(24)}, 6vw, #{rem(46)});
+  --f-size-xl: clamp(#{rem(20)}, 3vw, #{rem(36)});
+  --f-size-l: clamp(#{rem(18)}, 4vw, #{rem(26)});
+  --f-size-m: clamp(#{rem(17)}, 3vw, #{rem(24)});
+  --f-size-s: clamp(#{rem(16)}, 3vw, #{rem(20)});
 
   // Container width
   --container-width: min(88vw, #{rem(1920)});
 
   // Grid System params
   --grid-system-columns: 12;
-  --grid-system-offset: #{rem(32)};
+  --grid-system-offset: clamp(#{rem(16)}, 4vw, #{rem(32)});
   --grid-system-offset-oneside: calc(var(--grid-system-offset) / 2);
 
   // Scene height
@@ -48,6 +49,9 @@
   --text-color: #cdcdcd;
 
   // Box shadow
-  --general-shadow-rule: #{rem(3)} #{rem(3)} #{rem(5)} #{rem(-1)} rgba(29, 29, 29, 0.92);
-  --clock-shadow-rule: #{rem(6)} #{rem(7)} #{rem(4)} #{rem(-2)} rgba(10, 10, 10, 0.2);
+  --general-shadow-rule: #{rem(3)} #{rem(3)} #{rem(5)} rgba(29, 29, 29, 0.92);
+  --clock-shadow-rule: #{rem(6)} #{rem(7)} #{rem(4)} rgba(10, 10, 10, 0.2);
+
+  // z-index rules
+  --z-index: 68;
 }

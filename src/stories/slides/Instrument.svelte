@@ -1,83 +1,58 @@
 <script lang="ts">
-  // import { onMount } from "svelte";
-  // import { gsap } from "@/services/gsap";
   import { i18n } from "@/services/i18n";
 
   import Card from "$components/Card.svelte";
 
-  import AndroidIcon from "$assets/icons/brand-android.svg?raw";
-  import AppleIcon from "$assets/icons/brand-apple.svg?raw";
-  import FreeIcon from "$assets/icons/creative-commons-nc.svg?raw";
-  import NoDataIcon from "$assets/icons/mobiledata-off.svg?raw";
-  import LicensyIcon from "$assets/icons/license.svg?raw";
-  // import AnimatedCircle from "@/components/AnimatedCircle.svelte";
-
-  // onMount(() => {
-  //   const mm = gsap.matchMedia();
-
-  //   mm.add("(min-width: 1400px)", () => {
-  //     const tl = gsap.timeline();
-
-  //     tl.from("#figure", {
-  //       drawSVG: "0%",
-  //       duration: 3,
-  //       ease: "power1.ionOut",
-  //     });
-
-  //     return () => tl.kill();
-  //   });
-
-  //   return () => mm.revert();
-  // });
+  import USAFlag from "$assets/icons/flags/flag-us-svgrepo-com.svg?raw";
+  import PLFlag from "$assets/icons/flags/flag-pl-svgrepo-com.svg?raw";
+  import RUFlag from "$assets/icons/flags/flag-ru-svgrepo-com.svg?raw";
+  import UZBFlag from "$assets/icons/flags/flag-uz-svgrepo-com.svg?raw";
 </script>
 
-<section class="pstaapp">
+<section class="instruments">
   <div class="heading">
-    <h1 class="heading__title">polskie Ślady taszkent</h1>
-    <p class="heading__slogan">{$i18n.t("text.app.slogan")}</p>
-
-    <!-- <AnimatedCircle strokeColor="var(--gray-bg)" bodyId="figure" class="animation-figure" /> -->
+    <h1 class="heading__title">{$i18n.t("text.instrument.title")}</h1>
+    <p class="heading__slogan">{$i18n.t("text.instrument.slogan")}</p>
   </div>
 
   <div class="content">
     <Card class="card">
       <header class="card-header">
-        {@html AndroidIcon}
-        {@html AppleIcon}
+        {@html USAFlag}
       </header>
 
       <p class="card-description">
-        {$i18n.t("text.app.platform")}
+        {$i18n.t("text.instrument.en")}
       </p>
     </Card>
 
     <Card class="card">
       <header class="card-header">
-        {@html FreeIcon}
+        {@html PLFlag}
       </header>
 
       <p class="card-description">
-        {$i18n.t("text.app.free")}
+        {$i18n.t("text.instrument.pl")}
       </p>
     </Card>
 
     <Card class="card">
       <header class="card-header">
-        {@html NoDataIcon}
+        {@html RUFlag}
       </header>
 
       <p class="card-description">
-        {$i18n.t("text.app.nodata")}
+        {$i18n.t("text.instrument.ru")}
       </p>
     </Card>
 
     <Card class="card">
       <header class="card-header">
-        {@html LicensyIcon}
+        {@html UZBFlag}
       </header>
 
       <p class="card-description">
-        {$i18n.t("text.app.licensy")}
+        {$i18n.t("text.instrument.oz")}
       </p>
     </Card>
   </div>
@@ -87,7 +62,7 @@
   @use "$styles/_mixins.scss" as *;
   @use "$styles/_helpers.scss" as *;
 
-  .pstaapp {
+  .instruments {
     @include size(12);
     @include flex-row;
 
@@ -103,28 +78,17 @@
     @include size(12);
 
     & {
+      text-align: center;
+
+      margin-inline: auto;
       position: relative;
       z-index: 4;
+
+      @media (min-width: rem(960)) {
+        @include size(8);
+      }
     }
   }
-
-  // :global(.animation-figure) {
-  //   position: absolute;
-  //   top: rem(-130);
-  //   left: 0;
-  //   right: 0;
-
-  //   width: 100%;
-  //   height: rem(336);
-
-  //   z-index: -1;
-
-  //   transform: rotateZ(5deg);
-
-  //   @media (max-width: 1400px) {
-  //     display: none;
-  //   }
-  // }
 
   .content {
     @include flex-row;

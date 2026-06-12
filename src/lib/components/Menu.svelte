@@ -4,7 +4,7 @@
   import { useUI } from "@/services/UIController.svelte";
 
   import ExpandableSection from "./ExpandableSection.svelte";
-  import MenuButton from "./MenuButton.svelte";
+  import Button from "./Button.svelte";
 
   type Props = SvelteHTMLElements["section"] & {
     id: string;
@@ -20,7 +20,7 @@
 </script>
 
 <section class="menu" style:--menu-bg-color={ui.isOpen(id) ? "var(--secondary-bg)" : "transparent"}>
-  <MenuButton {label} {icon} onclick={() => children && ui.toggle(id, group)} />
+  <Button buttonName="menu-button" {label} {icon} onclick={() => children && ui.toggle(id, group)} />
 
   {#if children}
     <ExpandableSection open={ui.isOpen(id)}>

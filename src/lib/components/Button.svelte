@@ -5,14 +5,14 @@
   type Props = HTMLButtonAttributes & {
     icon?: Snippet;
     label?: string;
-    className?: string;
+    buttonName?: string;
     ref?: HTMLButtonElement;
   };
 
-  let { icon, label, className = "button", ref = $bindable(), ...restProps }: Props = $props();
+  let { icon, label, buttonName, ref = $bindable(), ...restProps }: Props = $props();
 </script>
 
-<button bind:this={ref} class={className} {...restProps}>
+<button data-button={buttonName !== undefined ? buttonName : "default"} bind:this={ref} {...restProps}>
   {#if icon}{@render icon()}{/if}
 
   {#if label}
@@ -21,11 +21,15 @@
 </button>
 
 <style lang="scss">
-  .button {
+  [data-button="default"] {
     --btn-label-size: var(--f-size-m);
-    --btn-b-radius: var(--b-radius-s);
+
     --btn-padding-y: var(--size-xs);
     --btn-padding-x: var(--size-xs);
+
+    --btn-bg-color: transparent;
+    --btn-label-color: var(--text-color);
+    --btn-bg-hover-color: var(--secondary-bg);
 
     font-family: var(--f-family-secondary);
     font-size: var(--btn-label-size);
@@ -35,42 +39,14 @@
     text-transform: capitalize;
     text-align: left;
 
-    // width: fit-content;
-    // height: fit-content;
     padding: var(--btn-padding-y) var(--btn-padding-x);
 
     border-radius: var(--btn-b-radius);
-    background-color: var(--dark-bg);
-    color: var(--text-color);
+    background-color: var(--btn-bg-color);
+    color: var(--btn-label-color);
 
     &:has(> .label) .label {
       margin-left: var(--size-s);
-    }
-  }
-
-  .menu-item {
-    font-family: var(--f-family-secondary);
-    font-size: var(--f-size-m);
-    font-weight: 400;
-    line-height: 1.2;
-
-    text-transform: capitalize;
-
-    display: flex;
-    flex-wrap: nowrap;
-
-    align-items: center;
-    justify-content: flex-start;
-
-    padding: var(--size-xs);
-    gap: var(--size-s);
-
-    border-radius: var(--b-radius-s);
-    // background-color: var(--secondary-bg);
-    color: var(--text-color);
-
-    &:hover {
-      background-color: var(--secondary-bg);
     }
   }
 </style>

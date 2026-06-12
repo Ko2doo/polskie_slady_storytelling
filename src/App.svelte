@@ -14,7 +14,6 @@
 
   import Popup from "$libs/components/Popup.svelte";
   import Menu from "$libs/components/Menu.svelte";
-  import SubmenuItem from "./lib/components/SubmenuItem.svelte";
   import Button from "$libs/components/Button.svelte";
 
   import BodyOverlay from "./lib/components/BodyOverlay.svelte";
@@ -22,6 +21,8 @@
   import Hero from "./stories/slides/Hero.svelte";
   import History from "./stories/slides/History.svelte";
   import PSTApp from "./stories/slides/PSTApp.svelte";
+  import Instrument from "./stories/slides/Instrument.svelte";
+  import OfflineNav from "./stories/slides/OfflineNav.svelte";
 
   const ui = createUIContext();
   const POPUP_ID = "settings";
@@ -63,6 +64,7 @@
 <main class="container">
   <Button
     bind:ref={triggerEl}
+    buttonName="settings"
     onclick={() => ui.toggle(POPUP_ID, POPUP_GROUP)}
     data-btn-settings={ui.isOpen(POPUP_ID) ? "opened" : ""}
   >
@@ -77,13 +79,15 @@
     <!-- <Lockscreen /> -->
     <!-- <Hero /> -->
     <!-- <History /> -->
-    <PSTApp />
+    <!-- <PSTApp /> -->
+    <!-- <Instrument /> -->
+    <OfflineNav />
   </div>
 </main>
 
 <Popup id={POPUP_ID} anchor={triggerEl} placement="bottom" offset={16}>
   <Button
-    className="menu-item"
+    buttonName="menu-button"
     label={$i18n.t(zenModeState ? "ui.popup.zenModeOff" : "ui.popup.zenModeOnn")}
     onclick={zenModeToggler}
   >
@@ -98,11 +102,11 @@
     {/snippet}
 
     {#each locales as [code, label]}
-      <SubmenuItem value={code} {label} onclick={() => languageSwitcher(code)} />
+      <Button buttonName="submenu-item" value={code} {label} onclick={() => languageSwitcher(code)} />
     {/each}
   </Menu>
 
-  <Button className="menu-item" label={$i18n.t("ui.popup.lock")}>
+  <Button buttonName="menu-button" label={$i18n.t("ui.popup.lock")}>
     {#snippet icon()}
       {@html LockIcon}
     {/snippet}
@@ -130,29 +134,7 @@
     transform: rotate(22deg);
   }
 
-  :global(.button[data-btn-settings]) {
-    position: absolute;
-    left: 8%;
-    bottom: 4%;
-
-    width: clamp(rem(30), 4vw, rem(48));
-    height: clamp(rem(30), 4vw, rem(48));
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border: rem(1) solid var(--secondary-bg);
-
-    @include z-index-xl;
-
-    @media (min-width: rem(830)) {
-      left: 1.3%;
-      bottom: var(--size-l);
-    }
-  }
-
-  :global(.button[data-btn-settings="opened"]) {
+  :global([data-btn-settings="opened"]) {
     background-color: var(--general-bg);
   }
 </style>

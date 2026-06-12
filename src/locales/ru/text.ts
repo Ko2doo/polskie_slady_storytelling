@@ -25,4 +25,16 @@ export default {
     licensy: 'Лицензия MIT',
     slogan: 'твой карманный путеводитель',
   },
+  instrument: {
+    title: 'Современная идея современный инструмент',
+    slogan: 'Мультиязычность и удобство под рукой',
+    en: 'english',
+    pl: 'Polski',
+    ru: 'Русский',
+    oz: 'O`zbek tili',
+  },
+  offlineNav: {
+    title: 'offline - навигация',
+    slogan: 'больше не нужна sim карта для прогулок',
+  },
 };

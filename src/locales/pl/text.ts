@@ -25,4 +25,16 @@ export default {
     licensy: 'Licencja MIT',
     slogan: 'Twój kieszonkowy przewodnik',
   },
+  instrument: {
+    title: 'Nowoczesny pomysł, nowoczesne narzędzie',
+    slogan: 'Wielojęzyczność i wygoda na wyciągnięcie ręki',
+    en: 'english',
+    pl: 'Polski',
+    ru: 'Русский',
+    oz: 'O`zbek tili',
+  },
+  offlineNav: {
+    title: 'Nawigacja offline',
+    slogan: 'Karta SIM nie jest już potrzebna podczas zwiedzania',
+  },
 };

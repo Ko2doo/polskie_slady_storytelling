@@ -58,6 +58,10 @@
 
   .app-name {
     @include heading(center, --f-size-3l, --text-color);
+
+    & {
+      text-shadow: var(--general-shadow-rule);
+    }
   }
 
   .app-slogan {
@@ -65,6 +69,7 @@
 
     & {
       margin-top: var(--size-s);
+      text-shadow: var(--general-shadow-rule);
     }
   }
 </style>

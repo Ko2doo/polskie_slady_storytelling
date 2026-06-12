@@ -50,10 +50,6 @@
 
   border-radius: var(--b-radius-m);
   background-color: var(--menu-bg-color);
-
-  &:hover {
-    background-color: var(--secondary-bg);
-  }
 }
 
 // <------: Popup
@@ -74,7 +70,6 @@
 }
 
 @mixin menu-item() {
-  --menu-item-bg: var(--secondary-bg);
   --menu-item-color: var(--text-color);
 
   font-family: var(--f-family-secondary);
@@ -93,13 +88,12 @@
   padding: var(--size-xs);
   gap: var(--size-s);
 
-  border-radius: var(--b-radius-s);
-  // background-color: var(--menu-item-bg);
+  border-radius: var(--b-radius-m);
   color: var(--menu-item-color);
 }
 
 @mixin submenu-item() {
-  --submenu-bg: var(--general-bg);
+  --submenu-bg: color-mix(in oklab, var(--secondary-bg) 50%, var(--gray-bg));
   --submenu-color: var(--text-color);
 
   font-family: var(--f-family-secondary);
@@ -178,9 +172,7 @@
   word-wrap: break-word;
   box-sizing: border-box;
 
-  &:not(:first-child) {
-    margin-left: var(--grid-system-offset-oneside);
-  }
+  margin-left: var(--grid-system-offset-oneside);
 }
 
 @mixin size($size) {

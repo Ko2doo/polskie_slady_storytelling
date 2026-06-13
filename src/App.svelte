@@ -92,7 +92,7 @@
       <Lockscreen
         onUnlock={() => {
           appState.unlock();
-          sceneController.go(0);
+          sceneController.jumpTo(0);
         }}
       />
     </div>

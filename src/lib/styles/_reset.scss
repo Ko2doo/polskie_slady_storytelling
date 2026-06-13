@@ -10,31 +10,27 @@ body {
   padding: 0;
   margin: 0;
 
-  position: relative;
-  overflow: hidden;
-
   // @include z-index-xs;
 }
 
 #app {
-  @include scene-rule;
-  // @include z-index-m;
+  font-size: 100%;
 
-  & {
-    font-size: 100%;
+  word-break: break-word;
+  text-wrap: balance;
 
-    word-break: break-word;
-    text-wrap: balance;
+  margin: 0;
+  padding-left: var(--size-l);
+  padding-right: var(--size-l);
 
-    margin: 0;
+  position: relative;
+  // overflow: hidden;
 
-    position: relative;
-    overflow: hidden;
+  background-color: var(--dark-bg);
+}
 
-    padding: var(--size-l);
-
-    background-color: var(--dark-bg);
-  }
+.wrapper {
+  height: 100%;
 }
 
 * {

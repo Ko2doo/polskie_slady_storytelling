@@ -1,8 +1,10 @@
 <script lang="ts">
   import { i18n } from "@/services/i18n";
   import { localeCode } from "./locales";
+  import { appState } from "@/core/state/app-state.svelte";
 
   import { createUIContext, POPUP_GROUP } from "@/services/UIController.svelte";
+  import { createController } from "@/core/controller/slide-controller.svelte";
 
   // Icons
   import MaximizeIcon from "$assets/icons/ui/Maximize.svg?raw";
@@ -12,38 +14,33 @@
   import SettingsIcon from "$assets/icons/ui/Settings.svg?raw";
   import SettingsDownIcon from "$assets/icons/ui/SettingsBold.svg?raw";
 
+  import Navigation from "./Navigation.svelte";
   import Popup from "$libs/components/Popup.svelte";
   import Menu from "$libs/components/Menu.svelte";
   import Button from "$libs/components/Button.svelte";
+  import BodyOverlay from "$libs/components/BodyOverlay.svelte";
 
-  import BodyOverlay from "./lib/components/BodyOverlay.svelte";
-  import Lockscreen from "./stories/Lockscreen.svelte";
-  import Hero from "./stories/slides/Hero.svelte";
-  import History from "./stories/slides/History.svelte";
-  import PSTApp from "./stories/slides/PSTApp.svelte";
-  import Instrument from "./stories/slides/Instrument.svelte";
-  import OfflineNav from "./stories/slides/OfflineNav.svelte";
+  import Lockscreen from "./story/Lockscreen.svelte";
+  import Intro from "./story/slides/intro/Intro.svelte";
+  import History from "./story/slides/timeline/History.svelte";
+  import AppInfo from "./story/slides/info/AppInfo.svelte";
+  import Advantage from "./story/slides/advantage/Advantage.svelte";
+  import OfflineNav from "./story/slides/map/OfflineNav.svelte";
 
   const ui = createUIContext();
+  const sceneController = createController();
   const POPUP_ID = "settings";
   const SUBMENU_GROUP = "settings.locales";
 
   let triggerEl: HTMLButtonElement | undefined = $state();
 
   // Language
-  let currentLocale: string = $state("");
   const locales = Object.entries(localeCode);
 
   const languageSwitcher = (code: string): void => {
     $i18n.changeLanguage(code);
     ui.closeAll();
   };
-
-  $effect(() => {
-    locales.forEach(([code, label]) => {
-      if (code === $i18n.language) currentLocale = label;
-    });
-  });
 
   // Zen mode (F11 fullscreen mode)
   let zenModeState: boolean = $state(false);
@@ -76,33 +73,51 @@
       window.removeEventListener("keydown", handleKeyDown, { capture: true });
     };
   });
+
+  $effect(() => {
+    appState.setCurrentSlide(sceneController.current);
+  });
 </script>
 
 <BodyOverlay />
 
-<main class="container">
-  <Button
-    bind:ref={triggerEl}
-    buttonName="settings"
-    onclick={() => ui.toggle(POPUP_ID, POPUP_GROUP)}
-    data-btn-settings={ui.isOpen(POPUP_ID) ? "opened" : ""}
-  >
-    {#snippet icon()}
-      <span class="icon-wrapper" class:icon-wrapper--active={ui.isOpen(POPUP_ID)}>
-        {@html ui.isOpen(POPUP_ID) ? SettingsDownIcon : SettingsIcon}
-      </span>
-    {/snippet}
-  </Button>
+{#if appState.locked}
+  <main class="container">
+    <div class="viewport">
+      <Lockscreen
+        onUnlock={() => {
+          appState.unlock();
+          sceneController.go(0);
+        }}
+      />
+    </div>
+  </main>
+{:else}
+  <Navigation controller={sceneController} />
 
-  <div class="viewport">
-    <!-- <Lockscreen /> -->
-    <!-- <Hero /> -->
-    <!-- <History /> -->
-    <!-- <PSTApp /> -->
-    <!-- <Instrument /> -->
-    <OfflineNav />
-  </div>
-</main>
+  <main class="container">
+    <div class="viewport">
+      <Intro index={0} controller={sceneController} />
+      <History index={1} controller={sceneController} />
+      <AppInfo index={2} controller={sceneController} />
+      <Advantage index={3} controller={sceneController} />
+      <OfflineNav index={4} controller={sceneController} />
+    </div>
+  </main>
+{/if}
+
+<Button
+  bind:ref={triggerEl}
+  buttonName="settings"
+  onclick={() => ui.toggle(POPUP_ID, POPUP_GROUP)}
+  data-btn-settings={ui.isOpen(POPUP_ID) ? "opened" : ""}
+>
+  {#snippet icon()}
+    <span class="icon-wrapper" class:icon-wrapper--active={ui.isOpen(POPUP_ID)}>
+      {@html ui.isOpen(POPUP_ID) ? SettingsDownIcon : SettingsIcon}
+    </span>
+  {/snippet}
+</Button>
 
 <Popup id={POPUP_ID} anchor={triggerEl} placement="bottom" offset={16}>
   <Button
@@ -125,11 +140,13 @@
     {/each}
   </Menu>
 
-  <Button buttonName="menu-button" label={$i18n.t("ui.popup.lock")}>
-    {#snippet icon()}
-      {@html LockIcon}
-    {/snippet}
-  </Button>
+  {#if !appState.locked}
+    <Button buttonName="menu-button" label={$i18n.t("ui.popup.lock")} onclick={() => appState.lock()}>
+      {#snippet icon()}
+        {@html LockIcon}
+      {/snippet}
+    </Button>
+  {/if}
 </Popup>
 
 <style lang="scss">

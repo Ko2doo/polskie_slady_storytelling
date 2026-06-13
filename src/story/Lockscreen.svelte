@@ -5,6 +5,15 @@
   import Button from "$libs/components/Button.svelte";
   import Unlock from "$assets/icons/ui/Unlock.svg?raw";
 
+  type Props = {
+    onUnlock: () => void;
+  };
+
+  let { onUnlock }: Props = $props();
+
+  let el: HTMLElement;
+  let timeline = $state<GSAPTimeline | undefined>();
+
   function useLiveClock() {
     const date = new SvelteDate();
 
@@ -39,41 +48,47 @@
 </script>
 
 <section class="lockscreen">
-  <header class="lockscreen__clock">
-    <!-- Clock and date -->
-    <h1 class="time">{timeFormatter.format(date)}</h1>
-    <p class="date">{dateFormatter.format(date)}</p>
-  </header>
+  <div class="wrapper">
+    <header class="lockscreen__clock">
+      <!-- Clock and date -->
+      <h1 class="time">{timeFormatter.format(date)}</h1>
+      <p class="date">{dateFormatter.format(date)}</p>
+    </header>
 
-  <footer class="lockscreen__footer">
-    <div class="lockscreen__unlock">
-      <Button
-        label={$i18n.t("ui.screenlock.unlock")}
-        style="--btn-padding-y: var(--size-s); --btn-padding-x: var(--size-m); --btn-label-size: var(--f-size-l);"
-      >
-        {#snippet icon()}
-          {@html Unlock}
-        {/snippet}
-      </Button>
+    <footer class="lockscreen__footer">
+      <div class="lockscreen__unlock">
+        <Button
+          label={$i18n.t("ui.screenlock.unlock")}
+          style="--btn-bg-color: var(--general-bg); --btn-padding-y: var(--size-s); --btn-padding-x: var(--size-m); --btn-label-size: var(--f-size-l);"
+          onclick={onUnlock}
+        >
+          {#snippet icon()}
+            {@html Unlock}
+          {/snippet}
+        </Button>
 
-      <p class="description">{$i18n.t("ui.screenlock.footermsg")}</p>
-    </div>
-  </footer>
+        <p class="description">{$i18n.t("ui.screenlock.footermsg")}</p>
+      </div>
+    </footer>
+  </div>
 </section>
 
 <style lang="scss">
   @use "$styles/_helpers.scss" as *;
   @use "$styles/_mixins.scss" as *;
 
-  .lockscreen {
+  .wrapper {
     @include flex-column;
 
     & {
-      height: 100%;
-
       padding-top: var(--size-xxl);
       justify-content: space-between;
     }
+  }
+
+  .lockscreen {
+    @include scene-rule;
+    @include scene-advanced;
 
     // Clocks
     &__clock {

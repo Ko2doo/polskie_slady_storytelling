@@ -21,8 +21,7 @@
 }
 
 [data-button='settings'] {
-  position: absolute;
-  left: 8%;
+  position: fixed;
   bottom: 4%;
 
   width: clamp(rem(30), 4vw, rem(48));
@@ -38,7 +37,18 @@
   @include z-index-xl;
 
   @media (min-width: rem(830)) {
-    left: 1.3%;
     bottom: var(--size-l);
   }
+}
+
+[data-button='scene-controller'] {
+  width: clamp(rem(30), 4vw, rem(48));
+  height: clamp(rem(30), 4vw, rem(48));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: rem(1) solid var(--secondary-bg);
+  border-radius: var(--btn-b-radius);
 }

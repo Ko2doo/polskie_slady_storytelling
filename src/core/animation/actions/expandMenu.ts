@@ -6,7 +6,7 @@ interface ExpandOptions {
   easeOut?: string;
 }
 
-export function gsapExpand(node: HTMLElement, options: ExpandOptions = {}) {
+export function expandMenu(node: HTMLElement, options: ExpandOptions = {}) {
   const { duration = 0.25, easeIn = 'power2.out', easeOut = 'power2.in' } = options;
 
   return {

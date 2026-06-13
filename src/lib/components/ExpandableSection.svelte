@@ -1,6 +1,6 @@
 <script lang="ts">
   import { untrack, type Snippet } from "svelte";
-  import { gsapExpand } from "../transitions/gsapExpand";
+  import { expandMenu } from "@/core/animation/actions/expandMenu";
 
   type Props = {
     open: boolean;
@@ -23,7 +23,7 @@
   // Close
   $effect(() => {
     if (!open && visible && containerEl) {
-      const { out } = gsapExpand(containerEl, { duration, easeOut });
+      const { out } = expandMenu(containerEl, { duration, easeOut });
       out().then(() => (visible = false));
     }
   });
@@ -31,7 +31,7 @@
   // Animation
   $effect(() => {
     if (open && visible && containerEl) {
-      const { in: animIn } = gsapExpand(containerEl, { duration, easeIn });
+      const { in: animIn } = expandMenu(containerEl, { duration, easeIn });
       animIn();
     }
   });

@@ -226,7 +226,7 @@
     height: calc(100% + #{rem(20)});
     pointer-events: none;
 
-    z-index: 1;
+    z-index: -1;
   }
 
   .route-path {

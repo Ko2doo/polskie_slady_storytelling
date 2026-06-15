@@ -2,7 +2,7 @@
   import { getContext } from "svelte";
   import { fly } from "svelte/transition";
 
-  import type { SlideController } from "@/core/controller/SlideController";
+  import type { SlideController } from "@/core/controller/SlideController.svelte";
 
   import Button from "$libs/components/Button.svelte";
   import PrevIcon from "$assets/icons/ui/ArrowUp.svg?raw";

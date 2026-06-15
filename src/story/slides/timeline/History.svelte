@@ -2,7 +2,7 @@
   import { getContext, onMount } from "svelte";
   import { buildTimeline } from "@/core/animation/BuildTimeline";
 
-  import type { SlideController } from "@/core/controller/SlideController";
+  import type { SlideController } from "@/core/controller/SlideController.svelte";
 
   import { gsap } from "@/core/services/gsap";
   import { showSlide, hideSlide } from "@/core/transitions/visibility";

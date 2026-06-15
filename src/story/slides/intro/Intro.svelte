@@ -3,7 +3,7 @@
   import { animate } from "@/core/animation/animate.svelte";
   import { buildTimeline } from "@/core/animation/BuildTimeline";
 
-  import type { SlideController } from "@/core/controller/SlideController";
+  import type { SlideController } from "@/core/controller/SlideController.svelte";
   import { showSlide, hideSlide } from "@/core/transitions/visibility";
 
   import { i18n } from "@/services/i18n";

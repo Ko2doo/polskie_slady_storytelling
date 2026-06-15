@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext, onMount } from "svelte";
   import { gsap } from "@/core/services/gsap";
-  import type { SlideController } from "@/core/controller/SlideController";
+  import type { SlideController } from "@/core/controller/SlideController.svelte";
 
   type Props = { index: number };
   let { index }: Props = $props();

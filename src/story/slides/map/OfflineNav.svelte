@@ -43,10 +43,10 @@
     <AnimatedRoad {index} />
 
     <div class="heading">
-      <h1 class="heading__title" use:animate={{ preset: "fadeUpSmall", at: "-=.4" }}>
+      <h1 class="heading__title" use:animate={{ preset: "fadeUpSmall" }}>
         {$i18n.t("text.offlineNav.title")}
       </h1>
-      <p class="heading__slogan" use:animate={{ preset: "fadeUpSmall", at: "-=.6" }}>
+      <p class="heading__slogan" use:animate={{ preset: "fadeUpSmall" }}>
         {$i18n.t("text.offlineNav.slogan")}
       </p>
     </div>

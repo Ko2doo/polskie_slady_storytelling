@@ -39,8 +39,8 @@
     <img use:animate={{ preset: "fadeUp" }} src={AppIcon} alt="Polskie Ślady Taszkent - app" class="app-icon" />
 
     <div class="hero__heading">
-      <h1 class="app-name" use:animate={{ preset: "fadeUpSmall", at: "-=.4" }}>Polskie Ślady Taszkent</h1>
-      <h3 class="app-slogan" use:animate={{ preset: "fadeUpSmall", at: "-=.6" }}>{$i18n.t("text.hero.appSlogan")}</h3>
+      <h1 class="app-name" use:animate={{ preset: "fadeUpSmall" }}>Polskie Ślady Taszkent</h1>
+      <h3 class="app-slogan" use:animate={{ preset: "fadeUpSmall" }}>{$i18n.t("text.hero.appSlogan")}</h3>
     </div>
   </div>
 </section>

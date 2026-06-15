@@ -43,8 +43,8 @@
 <section class="app-info" bind:this={el}>
   <div class="wrapper">
     <div class="heading">
-      <h1 class="heading__title" use:animate={{ preset: "fadeUpSmall", at: "-=.4" }}>polskie Ślady taszkent</h1>
-      <p class="heading__slogan" use:animate={{ preset: "fadeUpSmall", at: "-=.6" }}>{$i18n.t("text.app.slogan")}</p>
+      <h1 class="heading__title" use:animate={{ preset: "fadeUpSmall" }}>polskie Ślady taszkent</h1>
+      <p class="heading__slogan" use:animate={{ preset: "fadeUpSmall" }}>{$i18n.t("text.app.slogan")}</p>
     </div>
 
     <div class="content">

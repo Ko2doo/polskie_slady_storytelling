@@ -1,5 +1,0 @@
-{
-  "title": "Project code style formatting schema for .prettierrc",
-  "semi": true,
-  "editorconfig": true
-}

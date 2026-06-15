@@ -2,8 +2,8 @@
   import type { Snippet } from "svelte";
   import type { SvelteHTMLElements } from "svelte/elements";
 
-  import { gsap } from "@/services/gsap";
   import { untrack } from "svelte";
+  import { gsap } from "@/core/services/gsap";
   import { useUI } from "@/services/UIController.svelte";
 
   // Positioning

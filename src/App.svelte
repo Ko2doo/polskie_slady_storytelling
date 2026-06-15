@@ -2,10 +2,10 @@
   import { setContext, onMount } from "svelte";
   import { i18n } from "@/services/i18n";
   import { localeCode } from "./locales";
-  import { appState } from "@/core/state/app-state.svelte";
+  import { appState } from "@/core/state/AppState.svelte";
 
   import { createUIContext, POPUP_GROUP } from "@/services/UIController.svelte";
-  import { slidesController } from "@/core/controller/slide-controller.svelte";
+  import { slidesController } from "@/core/controller/SlideController.svelte";
 
   // Icons
   import MaximizeIcon from "$assets/icons/ui/Maximize.svg?raw";

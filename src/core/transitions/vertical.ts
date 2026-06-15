@@ -1,4 +1,4 @@
-import { gsap } from '@/services/gsap';
+import { gsap } from '@/core/services/gsap';
 import type { TransitionContext } from '@/core/types/story';
 import { showSlide, hideSlide } from './visibility';
 

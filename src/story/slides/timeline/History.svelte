@@ -1,18 +1,18 @@
 <script lang="ts">
   import { getContext, onMount } from "svelte";
-  import { buildTimeline } from "@/core/animation/build-timeline";
+  import { buildTimeline } from "@/core/animation/BuildTimeline";
 
-  import type { SlideController } from "@/core/controller/slide-controller.svelte";
+  import type { SlideController } from "@/core/controller/SlideController";
 
-  import { gsap } from "@/services/gsap";
+  import { gsap } from "@/core/services/gsap";
   import { showSlide, hideSlide } from "@/core/transitions/visibility";
   import { i18n } from "@/services/i18n";
 
   import { floatAnimation } from "@/core/animation/actions/floating";
 
   import HistoryCard from "@/components/HistoryCard.svelte";
-  import AnimatedArrowFirst from "@/components/AnimatedArrowFirst.svelte";
-  import AnimatedArrowSecond from "@/components/AnimatedArrowSecond.svelte";
+  import AnimatedArrowFirst from "@/core/animation/components/AnimatedArrowFirst.svelte";
+  import AnimatedArrowSecond from "@/core/animation/components/AnimatedArrowSecond.svelte";
 
   type Props = {
     index: number;

@@ -1,4 +1,4 @@
-import { gsap } from '@/services/gsap';
+import { gsap } from '@/core/services/gsap';
 
 interface ExpandOptions {
   duration?: number;

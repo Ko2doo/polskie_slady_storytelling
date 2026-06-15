@@ -1,4 +1,4 @@
-import { gsap } from '@/services/gsap';
+import { gsap } from '@/core/services/gsap';
 import type { TransitionContext } from '@/core/types/story';
 
 export function fadeTransition({ from, to }: TransitionContext): Promise<void> {

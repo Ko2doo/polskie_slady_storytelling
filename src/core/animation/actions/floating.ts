@@ -1,4 +1,4 @@
-import { gsap } from '@/services/gsap';
+import { gsap } from '@/core/services/gsap';
 
 export function floatAnimation(node: HTMLElement) {
   const tl = gsap.timeline({

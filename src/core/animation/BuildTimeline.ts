@@ -1,4 +1,4 @@
-import { gsap } from '@/services/gsap';
+import { gsap } from '@/core/services/gsap';
 import { presets } from './presets';
 
 import type { AnimationConfig } from './animate.svelte';

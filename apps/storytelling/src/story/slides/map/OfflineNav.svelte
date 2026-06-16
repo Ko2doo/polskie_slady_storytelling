@@ -7,6 +7,7 @@
   import type { SlideController } from "@/core/controller/slideController.svelte";
 
   import AnimatedRoad from "@/core/animation/components/AnimatedRoad.svelte";
+  import AnimatedRoadFullScreen from "@/core/animation/components/AnimatedRoadFullScreen.svelte";
   import { i18n } from "@/services/i18n";
 
   type Props = {
@@ -16,6 +17,7 @@
   let { index }: Props = $props();
 
   const controller = getContext<SlideController>("sceneController");
+  let zenMode = getContext<{ enabled: boolean }>("zenMode");
   let el: HTMLElement;
   let timeline = $state<GSAPTimeline | undefined>();
 
@@ -40,7 +42,11 @@
 
 <section class="offline-nav" bind:this={el}>
   <div class="wrapper">
-    <AnimatedRoad {index} />
+    {#if zenMode.enabled}
+      <AnimatedRoadFullScreen {index} />
+    {:else}
+      <AnimatedRoad {index} />
+    {/if}
 
     <div class="heading">
       <h1 class="heading__title" use:animate={{ preset: "fadeUpSmall" }}>

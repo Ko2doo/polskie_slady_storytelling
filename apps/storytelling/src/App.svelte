@@ -48,7 +48,12 @@
   };
 
   // Zen mode (F11 fullscreen mode)
-  let zenModeState: boolean = $state(false);
+  // let zenModeState: boolean = $state(false);
+  let zenMode = $state({
+    enabled: false,
+  });
+
+  setContext("zenMode", zenMode);
 
   const zenModeToggler = (): void => {
     if (!document.fullscreenElement) {
@@ -60,7 +65,7 @@
 
   $effect(() => {
     const handleFullscreenChange = () => {
-      zenModeState = !!document.fullscreenElement;
+      zenMode.enabled = !!document.fullscreenElement;
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -69,6 +74,8 @@
         zenModeToggler();
       }
     };
+
+    handleFullscreenChange();
 
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     window.addEventListener("keydown", handleKeyDown, { capture: true });
@@ -130,11 +137,11 @@
 <Popup id={POPUP_ID} anchor={triggerEl} placement="bottom" offset={16}>
   <Button
     buttonName="menu-button"
-    label={zenModeState ? $i18n.t("ui.popup.zenModeOff") : $i18n.t("ui.popup.zenModeOnn")}
+    label={zenMode.enabled ? $i18n.t("ui.popup.zenModeOff") : $i18n.t("ui.popup.zenModeOnn")}
     onclick={zenModeToggler}
   >
     {#snippet icon()}
-      {@html zenModeState ? MinimizeIcon : MaximizeIcon}
+      {@html zenMode.enabled ? MinimizeIcon : MaximizeIcon}
     {/snippet}
   </Button>
 
@@ -155,6 +162,7 @@
       onclick={() => {
         appState.lock();
         removeLocalStorage("CapacitorStorage.app.onboarding.completed");
+        removeLocalStorage("CapacitorStorage.locale");
       }}
     >
       {#snippet icon()}

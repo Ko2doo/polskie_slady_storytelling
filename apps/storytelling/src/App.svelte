@@ -91,6 +91,13 @@
 
     if (restoreIndex > 0) sceneController.jumpTo(restoreIndex);
   });
+
+  const lockHandler = (): void => {
+    appState.lock();
+    removeLocalStorage("CapacitorStorage.app.onboarding.completed");
+    removeLocalStorage("CapacitorStorage.locale");
+    removeLocalStorage("CapacitorStorage.ui.theme");
+  };
 </script>
 
 <BodyOverlay />
@@ -156,15 +163,7 @@
   </Menu>
 
   {#if !appState.locked}
-    <Button
-      buttonName="menu-button"
-      label={$i18n.t("ui.popup.lock")}
-      onclick={() => {
-        appState.lock();
-        removeLocalStorage("CapacitorStorage.app.onboarding.completed");
-        removeLocalStorage("CapacitorStorage.locale");
-      }}
-    >
+    <Button buttonName="menu-button" label={$i18n.t("ui.popup.lock")} onclick={lockHandler}>
       {#snippet icon()}
         {@html LockIcon}
       {/snippet}
